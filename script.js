@@ -42,5 +42,8 @@ createApp({
     goToPrev() {
       this.currentIndex--;
     },
+    setCurrentIndex(targetIndex) {
+      this.currentIndex = targetIndex;
+    },
   },
 }).mount("#root");
