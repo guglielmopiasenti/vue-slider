@@ -95,8 +95,12 @@ main {
     width: 180px;
     height: 130px;
     margin: 0 5px;
+    filter: grayscale(1);
 }
-
+#thumbnails img.active {
+    filter: grayscale(0);
+    box-shadow: 0 0 10px gray;
+}
 /* banner */
 
 .banner-title {
