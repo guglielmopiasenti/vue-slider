@@ -82,15 +82,14 @@
         <div id="root" class="container py-5">
             <h1 class="text-white text-center">Giochi in evidenza disponibili ora</h1>
             <div id="carousel" class="shadow">
-                <i class="bi bi-arrow-left-circle-fill" id="prev"></i>
+                <i class="bi bi-arrow-left-circle-fill" id="prev" @click="goToPrev"></i>
                 <div class="gallery">
                     <img v-for="(img, i) in images" :src="img.image" alt="img.title" :class="{active : currentIndex === i}">
                 </div>
-                <i class="bi bi-arrow-right-circle-fill" id="next"></i>
+                <i class="bi bi-arrow-right-circle-fill" id="next" @click="goToNext"></i>
             </div>
             <div id="thumbnails" class="d-flex align-items-center justify-content-center my-3">
                 <img v-for="(img, i) in images" :src="img.image" alt="img.title" :class="{active : currentIndex === i}">
-    
             </div>
         </div>
         <div class="container py-5">
