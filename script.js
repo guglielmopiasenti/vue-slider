@@ -35,4 +35,12 @@ createApp({
       ],
     };
   },
+  methods: {
+    goToNext() {
+      this.currentIndex++;
+    },
+    goToPrev() {
+      this.currentIndex--;
+    },
+  },
 }).mount("#root");
