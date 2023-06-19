@@ -101,6 +101,12 @@ main {
     filter: grayscale(0);
     box-shadow: 0 0 10px gray;
 }
+
+figcaption.active {
+    display: block;
+}
+
+
 /* banner */
 
 .banner-title {
