@@ -35,15 +35,36 @@ createApp({
       ],
     };
   },
+  computed: {
+    isLastPicture() {
+      return this.currentIndex === this.images.length - 1;
+    },
+    isFirstPicture() {
+      return this.currentIndex === 0;
+    },
+  },
   methods: {
     goToNext() {
-      this.currentIndex++;
+      if (this.isLastPicture) {
+        this.currentIndex = 0;
+      } else {
+        this.currentIndex++;
+      }
     },
     goToPrev() {
-      this.currentIndex--;
+      if (this.isFirstPicture) {
+        this.currentIndex = 4;
+      } else {
+        this.currentIndex--;
+      }
     },
     setCurrentIndex(targetIndex) {
       this.currentIndex = targetIndex;
+    },
+
+    // LifeCycle Methods
+    mounted() {
+      setInterval(this.goToNext, 3000);
     },
   },
 }).mount("#root");
