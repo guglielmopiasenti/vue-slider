@@ -1,72 +1,38 @@
-// ! Preliminary operations
+console.log("VUE OK", Vue);
 
-//  I get prev and next
-const prevButton = document.getElementById('prev');
-const nextButton = document.getElementById('next');
+const { createApp } = Vue;
 
-
-// I get the gallery from the DOM
-const gallery = document.querySelector('.gallery');
-
-// preparing the images
-const sources = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img/05.webp'];
-
-// preparing HTML for the images
-let imageElements = '';
-
-//for every source i create a tag img
-for (let i = 0; i < sources.length; i++) {
-    imageElements += `<img src=" ${sources[i]}" alt="Videogame ${i + 1}"> `;
-}
-
-// I insert the images into the DOM
-gallery.innerHTML = imageElements;
-
-
-// Preparing Index
-let currentIndex = 0;
-console.log (currentIndex);
-
-// I get the images from the DOM
-const images = document.querySelectorAll('#carousel img');
-
-// setting up the first image as active 
-images[currentIndex].classList.add('active');
-console.log (images);
-
-
-// ! Reasoning logic
-
-// Set next button to listen
-nextButton.addEventListener('click', function() {
-    // Remove the active class from the current image
-    images[currentIndex].classList.remove('active');
-
-    // Increment the current index
-    currentIndex++;
-
-    // If the current index exceeds the last index, set it to 0 to wrap around
-    if (currentIndex >= images.length) {
-        currentIndex = 0;
-    }
-
-    // Add the active class to the new currentIndex image
-    images[currentIndex].classList.add('active');
-});
-
-// Set prev button to listen
-prevButton.addEventListener('click', function() {
-    // Remove the active class from the current image
-    images[currentIndex].classList.remove('active');
-
-    // Decrement the current index
-    currentIndex--;
-
-    // If the current index is less than 0, set it to the last index to wrap around
-    if (currentIndex < 0) {
-        currentIndex = images.length - 1;
-    }
-
-    // Add the active class to the new currentIndex image
-    images[currentIndex].classList.add('active');
-});
+createApp({
+  data() {
+    return {
+      currentIndex: 0,
+      images: [
+        {
+          image: "img/01.webp",
+          title: "Marvel's Spiderman Miles Morale",
+          text: "Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.",
+        },
+        {
+          image: "img/02.webp",
+          title: "Ratchet & Clank: Rift Apart",
+          text: "Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.",
+        },
+        {
+          image: "img/03.webp",
+          title: "Fortnite",
+          text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.",
+        },
+        {
+          image: "img/04.webp",
+          title: "Stray",
+          text: "Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city",
+        },
+        {
+          image: "img/05.webp",
+          title: "Marvel's Avengers",
+          text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
+        },
+      ],
+    };
+  },
+}).mount("#root");
