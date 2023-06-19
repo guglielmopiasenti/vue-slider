@@ -5,6 +5,7 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
+      autoplay: null,
       currentIndex: 0,
       images: [
         {
@@ -61,10 +62,15 @@ createApp({
     setCurrentIndex(targetIndex) {
       this.currentIndex = targetIndex;
     },
-
-    // LifeCycle Methods
-    mounted() {
-      setInterval(this.goToNext, 3000);
+    stopAutoPlay() {
+      clearInterval(this.autoplay);
     },
+    startAutoPlay() {
+      this.autoplay = setInterval(this.goToNext, 3000);
+    },
+  },
+  // LifeCycle Methods
+  mounted() {
+    this.startAutoPlay();
   },
 }).mount("#root");

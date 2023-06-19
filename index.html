@@ -89,7 +89,7 @@
                 <i class="bi bi-arrow-right-circle-fill" id="next" @click="goToNext"></i>
             </div>
             <div id="thumbnails" class="d-flex align-items-center justify-content-center my-3">
-                <img v-for="(img, i) in images" :src="img.image" alt="img.title" :class="{active : currentIndex === i}" @click="setCurrentIndex(i)">
+                <img v-for="(img, i) in images" :src="img.image" alt="img.title" :class="{active : currentIndex === i}" @click="setCurrentIndex(i)" @mouseenter='stopAutoPlay' @mouseleave='startAutoPlay'>
             </div>
         </div>
         <div class="container py-5">
